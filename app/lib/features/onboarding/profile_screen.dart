@@ -38,7 +38,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               const SizedBox(height: 12),
               DropdownButtonFormField<String>(
-                value: _region,
+                initialValue: _region,
                 items: const [
                   DropdownMenuItem(value: 'KE', child: Text('Kenya (KE)')),
                 ],
@@ -47,7 +47,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               const SizedBox(height: 12),
               DropdownButtonFormField<String>(
-                value: _language,
+                initialValue: _language,
                 items: const [
                   DropdownMenuItem(value: 'en', child: Text('English')),
                 ],

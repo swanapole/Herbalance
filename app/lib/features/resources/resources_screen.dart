@@ -26,7 +26,7 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
       _error = null;
     });
     try {
-      final api = const ApiClient();
+      const api = ApiClient();
       final json = await api.getResourcesKE();
       setState(() => _data = json);
     } catch (e) {

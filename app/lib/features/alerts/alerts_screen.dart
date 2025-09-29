@@ -12,7 +12,7 @@ class AlertsScreen extends StatefulWidget {
 }
 
 class _AlertsScreenState extends State<AlertsScreen> {
-  final _types = const [
+  static const List<DropdownMenuItem<String>> _types = [
     DropdownMenuItem(value: 'screening', child: Text('Screening')),
     DropdownMenuItem(value: 'vaccination', child: Text('Vaccination')),
     DropdownMenuItem(value: 'checkin', child: Text('Wellness check-in')),
@@ -40,7 +40,7 @@ class _AlertsScreenState extends State<AlertsScreen> {
     try {
       final uid = await StorageService().getUserId();
       if (uid == null) throw Exception('Missing user. Re-onboard.');
-      final api = const ApiClient();
+      const api = ApiClient();
       final list = await api.listAlerts(uid);
       setState(() {
         _userId = uid;
@@ -57,7 +57,7 @@ class _AlertsScreenState extends State<AlertsScreen> {
     if (_userId == null) return;
     setState(() => _loading = true);
     try {
-      final api = const ApiClient();
+      const api = ApiClient();
       await api.createAlert(userId: _userId!, type: _type, scheduleAt: _when);
       await _load();
     } catch (e) {
@@ -86,7 +86,7 @@ class _AlertsScreenState extends State<AlertsScreen> {
                   Row(children: [
                     Expanded(
                       child: DropdownButtonFormField<String>(
-                        value: _type,
+                        initialValue: _type,
                         items: _types,
                         onChanged: (v) => setState(() => _type = v ?? 'screening'),
                         decoration: const InputDecoration(labelText: 'Type'),
@@ -102,10 +102,21 @@ class _AlertsScreenState extends State<AlertsScreen> {
                             lastDate: DateTime.now().add(const Duration(days: 365)),
                             initialDate: _when,
                           );
+                          if (!context.mounted) return;
                           if (date != null) {
-                            final time = await showTimePicker(context: context, initialTime: TimeOfDay.fromDateTime(_when));
+                            final time = await showTimePicker(
+                              context: context,
+                              initialTime: TimeOfDay.fromDateTime(_when),
+                            );
+                            if (!context.mounted) return;
                             if (time != null) {
-                              setState(() => _when = DateTime(date.year, date.month, date.day, time.hour, time.minute));
+                              setState(() => _when = DateTime(
+                                    date.year,
+                                    date.month,
+                                    date.day,
+                                    time.hour,
+                                    time.minute,
+                                  ));
                             }
                           }
                         },

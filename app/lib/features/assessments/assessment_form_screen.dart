@@ -152,7 +152,7 @@ class _AssessmentFormScreenState extends State<AssessmentFormScreen> {
           answers = {'sleep': _sleep, 'mood': _mood, 'workload': _workload};
       }
 
-      final api = const ApiClient();
+      const api = ApiClient();
       await api.createAssessment(userId: userId, type: _type, answers: answers, riskScore: riskScore, explanation: explanation);
 
       if (!mounted) return;
@@ -179,7 +179,7 @@ class _AssessmentFormScreenState extends State<AssessmentFormScreen> {
           child: ListView(
             children: [
               DropdownButtonFormField<String>(
-                value: _type,
+                initialValue: _type,
                 items: _types,
                 onChanged: (v) => setState(() => _type = v ?? 'mental_health_stress'),
                 decoration: const InputDecoration(labelText: 'Assessment type'),

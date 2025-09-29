@@ -9,7 +9,7 @@ class ClassifierService {
     final score = (sleepFactor * 0.4 + moodFactor * 0.4 + workloadFactor * 0.2).clamp(0.0, 1.0);
     return {
       'score': score,
-      'explanation': 'Computed from sleep(${sleepQuality}), mood(${mood}), workload(${workload}).'
+      'explanation': 'Computed from sleep($sleepQuality), mood($mood), workload($workload).'
     };
   }
 

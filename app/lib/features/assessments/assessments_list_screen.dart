@@ -35,7 +35,7 @@ class _AssessmentsListScreenState extends State<AssessmentsListScreen> {
         context.go('/onboarding');
         return;
       }
-      final api = const ApiClient();
+      const api = ApiClient();
       final list = await api.listAssessments(uid);
       setState(() {
         _userId = uid;

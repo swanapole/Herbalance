@@ -38,7 +38,7 @@ class _PrivacyCenterScreenState extends State<PrivacyCenterScreen> {
     try {
       final uid = await StorageService().getUserId();
       if (uid == null) throw Exception('No user');
-      final api = const ApiClient();
+      const api = ApiClient();
       final data = await api.exportUser(uid);
       setState(() => _export = data);
     } catch (e) {
@@ -71,10 +71,10 @@ class _PrivacyCenterScreenState extends State<PrivacyCenterScreen> {
       _error = null;
     });
     try {
-      final api = const ApiClient();
+      const api = ApiClient();
       await api.deleteUser(uid);
       await StorageService().clearAll();
-      if (!mounted) return;
+      if (!context.mounted) return;
       context.go('/onboarding');
     } catch (e) {
       setState(() => _error = e.toString());

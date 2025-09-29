@@ -25,7 +25,7 @@ class _ConsentScreenState extends State<ConsentScreen> {
       final region = extra['region'] as String? ?? 'KE';
       final language = extra['language'] as String? ?? 'en';
 
-      final api = const ApiClient();
+      const api = ApiClient();
       final res = await api.createOrUpdateUser(
         email: email,
         region: region,
