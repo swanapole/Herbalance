@@ -1,0 +1,128 @@
+openapi: 3.0.3
+info:
+  title: Women's Preventive API
+  version: 0.1.0
+  description: API for preventive health + mental health MVP (Kenya)
+servers:
+  - url: http://localhost:4000
+paths:
+  /health:
+    get:
+      summary: Health check
+      responses:
+        '200':
+          description: OK
+  /api/users:
+    post:
+      summary: Create or update a user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                region:
+                  type: string
+                language:
+                  type: string
+                consents:
+                  type: object
+      responses:
+        '201':
+          description: Created
+  /api/users/{id}:
+    get:
+      summary: Get user by id
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not found
+    delete:
+      summary: Delete user by id
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not found
+  /api/users/{id}/export:
+    get:
+      summary: Export user data (profile, assessments, alerts)
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+  /api/assessments:
+    post:
+      summary: Create assessment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Created
+  /api/assessments/user/{userId}:
+    get:
+      summary: List assessments for a user
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+  /api/alerts:
+    post:
+      summary: Create alert
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Created
+  /api/alerts/user/{userId}:
+    get:
+      summary: List alerts for a user
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+  /api/resources:
+    get:
+      summary: Get Kenya resources directory
+      responses:
+        '200':
+          description: OK

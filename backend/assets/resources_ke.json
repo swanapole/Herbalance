@@ -1,0 +1,61 @@
+{
+  "region": "KE",
+  "updated_at": "2025-09-25T00:00:00Z",
+  "categories": [
+    {
+      "id": "health_guidelines",
+      "title": "Health Guidelines",
+      "items": [
+        {
+          "name": "Ministry of Health Kenya",
+          "url": "https://www.health.go.ke/",
+          "description": "Official health information, programs, and advisories."
+        },
+        {
+          "name": "Kenya National Cancer Screening Guidelines",
+          "url": "https://www.health.go.ke/",
+          "description": "Screening policy and protocols (breast, cervical)."
+        }
+      ]
+    },
+    {
+      "id": "insurance",
+      "title": "Insurance & Coverage",
+      "items": [
+        {
+          "name": "NHIF Kenya",
+          "url": "https://www.nhif.or.ke/",
+          "description": "Health insurance information, benefits, and facilities."
+        }
+      ]
+    },
+    {
+      "id": "mental_health",
+      "title": "Mental Health Resources",
+      "items": [
+        {
+          "name": "Mental Health Policy (Kenya)",
+          "url": "https://www.health.go.ke/",
+          "description": "National strategy and resources for mental health."
+        },
+        {
+          "name": "Befrienders Worldwide (International)",
+          "url": "https://www.befrienders.org/",
+          "description": "Find emotional support lines worldwide (verify local availability)."
+        }
+      ]
+    },
+    {
+      "id": "facilities",
+      "title": "Find Facilities",
+      "items": [
+        {
+          "name": "Facility List (MOH)",
+          "url": "https://www.health.go.ke/",
+          "description": "Public health facilities information (search by county)."
+        }
+      ]
+    }
+  ],
+  "disclaimer": "This directory is for informational purposes only. Verify availability and eligibility directly with providers."
+}
